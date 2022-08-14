@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ECF TRAIN 3{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+<h1>ECF TRAIN 3</h1>
+
+{% for user in users %}
+
+
+{# 
+    <div class="context">
+    <u><h3>CONTEXTE : J'ai 3 entités :</h3></u>
+        <p>Un User :</p>
+        <ul>
+            <li>id: int</li>
+            <li>email: string</li>
+            <li>password: string</li>
+            <li>name: string</li>
+            <li>role: json</li>
+        </ul>
+        <hr>
+        <p>Un Partner :</p>
+        <ul>
+            <li>id: int</li>
+            <li>user_id: relation OneToOne</li>
+            <li>name: string</li>
+            <li>permissions: json (tableau d'objets avec clé et valeur)</li>
+        </ul>
+        <hr>
+        <p>Une Structure :</p>
+        <ul>
+            <li>id: int</li>
+            <li>user_id: relation OneToOne</li>
+            <li>partner_id: relation ManyToOne (un partenaire peut avoir plusieurs structures, mais une structure n'a qu'un partenaire) </li>
+            <li>postalAdress: string</li>
+            <li>permissions: json</li>
+        </ul>
+        <hr>
+    <h3>Ces 3 entités sont reliées entre elles</h3>
+    </div>
+
+    <hr>
+    <hr> #}
+
+    DUMP DES USERS : {{ dump(user) }}<br>
+    
+
+    <div class="user" style="border: 1px solid #000;margin-bottom: 2rem">
+        <h4>User</h4>
+        user.name : {{ user.name }}<br>
+        user.email : {{ user.email }}<br>
+        user.password : {{ user.password }}". <br>
+    </div>
+
+
+    <div class="partner" style="border: 1px solid #000;margin-bottom: 2rem">
+        <h4>Partner</h4>
+
+        user.name : {{ user.name }}"<br>
+        user.partner.id : {{ user.partner.id }}"<br>
+        user.partner.permissions :
+        <ul>
+            {% for permission_object in user.partner.permissions %}
+                <li>
+                {% for key, value in permission_object %}
+                    {{ key }} : {{ value }}
+                {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {# <div class="structure" style="border: 1px solid #000;margin-bottom: 2rem">
+        <h4>Structure</h4>
+        user.structure.id : {{ user.structure.id }} <br>
+        user.structure.postalAdress : {{ user.structure.postalAdress }} <br>
+        user.structure.permissions :
+        <ul>
+            {% for permission_object in user.structure.partnerID.permissions %}
+                <li>
+                {% for key, value in permission_object %}
+                    {{ key }} : {{ value }}
+                {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div> #}
+
+
+    
+
+
+    <br>
+{% endfor %}     
+
+</div>
+{% endblock %}
