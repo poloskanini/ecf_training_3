@@ -59,23 +59,7 @@
         user.password : {{ user.password }}". <br>
     </div>
 
-
-    <div class="partner" style="border: 1px solid #000;margin-bottom: 2rem">
-        <h4>Partner</h4>
-
-        user.name : {{ user.name }}"<br>
-        user.partner.id : {{ user.partner.id }}"<br>
-        user.partner.permissions :
-        <ul>
-            {% for permission_object in user.partner.permissions %}
-                <li>
-                {% for key, value in permission_object %}
-                    {{ key }} : {{ value }}
-                {% endfor %}
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+{# z #}
 
     {# <div class="structure" style="border: 1px solid #000;margin-bottom: 2rem">
         <h4>Structure</h4>
